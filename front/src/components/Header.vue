@@ -1,5 +1,14 @@
 <template>
-    <div class="header">This is header</div>
+    <div class="header">
+        <section class="section is-header">
+            <div class="container">
+                
+                This is Header
+                    
+            
+            </div>
+        </section>
+    </div>
 </template>
 
 <script>

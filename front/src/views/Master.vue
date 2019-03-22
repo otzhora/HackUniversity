@@ -3,6 +3,8 @@
     <Header />
     <TrackList />
     <PlayWindow />
+    <Plugin />
+    <Plugin />
     <h1>This is a master page</h1>
   </div>
 </template>
@@ -11,12 +13,14 @@
 import Header from '../components/Header'
 import TrackList from '../components/TrackList'
 import PlayWindow from '../components/PlayWindow'
+import Plugin from '../components/Plugin'
 export default {
   name: 'Master',
   components: {
     Header,
     TrackList,
-    PlayWindow
+    PlayWindow,
+    Plugin
   }
 }
 </script>
