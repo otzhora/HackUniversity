@@ -1,6 +1,5 @@
 <template>
   <div class="master">
-    <Header />
     <TrackList />
     <PlayWindow />
     <Plugin />
@@ -10,14 +9,12 @@
 </template>
 
 <script>
-import Header from '../components/Header'
 import TrackList from '../components/TrackList'
 import PlayWindow from '../components/PlayWindow'
 import Plugin from '../components/Plugin'
 export default {
   name: 'Master',
   components: {
-    Header,
     TrackList,
     PlayWindow,
     Plugin

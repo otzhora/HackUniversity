@@ -1,16 +1,20 @@
 <template>
   <div class="main-page">
-    <Header />
-    Главная страница
+
+
+   
+    Я домашняя страничка
+
+    
   </div>
 </template>
 
 <script>
-import Header from './Header'
+
 export default {
   name: 'MainPage',
   components: {
-    Header
+    
   }
 }
 </script>

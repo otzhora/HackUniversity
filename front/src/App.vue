@@ -1,8 +1,34 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/master">Master</router-link>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+
+          <a class="navbar-item" href="/">
+            <img src="./assets/trava.png" alt="logo" width='50' height="100">
+          </a>
+          
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <!-- navbar items -->
+          </div>
+
+          <div class="navbar-end">
+            <!-- navbar items -->
+            <a class="navbar-item">
+              <router-link to="/">Home</router-link>
+            </a>
+            <a class="navbar-item">
+              <router-link to="/master">Master</router-link>
+            </a>
+            
+          </div>
+        </div>
+        
+      </nav>
+      
+      
     </div>
     <router-view/>
   </div>
@@ -15,6 +41,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

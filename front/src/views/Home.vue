@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <MainPage msg="Welcome to Your Vue.js App"/>
+    <MainPage />
   </div>
 </template>
 
