@@ -13,9 +13,24 @@ import Draggable from 'gsap/Draggable'
 export default {
     name: "Plugin",
     mounted(){
-        let knob = document.querySelector('.knob')
-        console.log(knob)
-        Draggable.create(".knob", {type: "rotation", throwProps: true});
+        
+        Draggable.create(".knob", {
+            type: "rotation",
+            bounds:{minRotation:0, maxRotation:360}, 
+            throwProps: true,
+            liveSnap:{
+                rotation: function(value) {
+                    //TODO: send values to server
+                    console.log(value)
+                    return Math.round(value / 10) * 10; 
+                }
+            },
+            
+        })
+        
+    },
+    methods: {
+
     }
 }
 </script>
