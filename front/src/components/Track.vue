@@ -3,7 +3,7 @@
         <a class="panel-block is-active" @click="sendToPlayer">
                 
                 
-            {{track.name}}
+            {{track.title}}
         
         
             <img class="right" src="https://img.icons8.com/material/24/000000/play.png">
