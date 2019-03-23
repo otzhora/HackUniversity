@@ -25,7 +25,7 @@
 <script>
 
 import TracksService from '@/services/TracksService';
-import wavesurfer from "wavesurfer.js";
+// import wavesurfer from "wavesurfer.js";
 
 export default {
   name: 'MainPage',
@@ -42,37 +42,37 @@ export default {
   },
 
   created() {
-      console.log(window.WaveSurfer);
+      // console.log(window.WaveSurfer);
 
-      this.wavesurfer = wavesurfer.create({
-        container: '#waveform',
-        plugins: [
-          wavesurfer.cursor.create({
-              showTime: true,
-              opacity: 1,
-              customShowTimeStyle: {
-                  color: '#fff',
-                  padding: '2px',
-                  'font-size': '10px'
-              }
-          })
-        ]
-      });
+      // this.wavesurfer = wavesurfer.create({
+      //   container: '#waveform',
+      //   plugins: [
+      //     wavesurfer.cursor.create({
+      //         showTime: true,
+      //         opacity: 1,
+      //         customShowTimeStyle: {
+      //             color: '#fff',
+      //             padding: '2px',
+      //             'font-size': '10px'
+      //         }
+      //     })
+      //   ]
+      // });
 
-      this.wavesurfer.on('ready', function () {
-        this.ready = true;
-      });
+      // this.wavesurfer.on('ready', function () {
+      //   this.ready = true;
+      // });
     
       this.masterTrack = /*await*/ TracksService.getMasterTrack();
-      this.wavesurfer.load(this.masterTrack.url);
+      // this.wavesurfer.load(this.masterTrack.url);
 
   },
 
   methods: {
     playPause: function() {
 
-      this.wavesurfer.playPause();
-      this.isPlaying = this.wavesurfer.isPlaying();
+      // this.wavesurfer.playPause();
+      // this.isPlaying = this.wavesurfer.isPlaying();
     }
   }
 }

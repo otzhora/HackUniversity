@@ -23,7 +23,7 @@ input[type=range] {
   height: 26px;
   -webkit-appearance: none;
   margin: 10px 0;
-  width: 100%;
+  width: 500px;
 }
 input[type=range]:focus {
   outline: none;
