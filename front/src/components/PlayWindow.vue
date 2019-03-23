@@ -1,6 +1,6 @@
 <template>
     <div class="playwindow">
-        This is playwindow
+        <img src="../assets/playwindow.png" alt="">
     </div>
 </template>
 

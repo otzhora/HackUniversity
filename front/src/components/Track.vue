@@ -1,12 +1,13 @@
 <template>
     <div class="track">
-        This is track
+        {{track.text}}
     </div>
 </template>
 
 <script>
 export default {
-    name: "Track"
+    name: "Track",
+    props: ["track"]
 }
 </script>
 

@@ -1,8 +1,12 @@
 <template>
     <div class="tracklist">
         This is tracklist
-        <Track />
+        <div v-bind:key="track.id"
+        v-for="track in tracks">
+            <Track v-bind:track="track"/>
+        </div>
         
+
     </div>
 </template>
 
@@ -10,6 +14,7 @@
 import Track from './Track'
 export default {
     name: "TrackList",
+    props:["tracks"],
     components: {
         Track
     }
