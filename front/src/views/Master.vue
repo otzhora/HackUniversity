@@ -1,10 +1,33 @@
 <template>
   <div class="master">
-    <TrackList />
-    <PlayWindow />
-    <Plugin />
-    <Plugin />
-    <h1>This is a master page</h1>
+    <section class="section">
+      
+        <div class='columns is-gapless'>
+          <div class='column is-one-third'>
+            <TrackList v-bind:tracks="tracks"/>
+          </div>
+          <div class='column'>
+            <PlayWindow />
+            <div class='columns'>
+              
+              <div class="column">
+                <div class='columns'>
+                  <div class='column'><Plugin />
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                  </div>
+                  <div class='column'><Plugin />
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      
+    </section>
+    
+    
   </div>
 </template>
 
@@ -13,7 +36,7 @@ import TrackList from '../components/TrackList'
 import PlayWindow from '../components/PlayWindow'
 import Plugin from '../components/Plugin'
 
-// require( 'tone' )(); Not work for me
+// require( 'tone' )(); Not works for me
 
 export default {
   name: 'Master',
@@ -28,6 +51,20 @@ export default {
     scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js";
     scriptTag.id = "main";
     document.getElementsByTagName('head')[0].appendChild(scriptTag);
+  },
+  data(){
+      return {
+          tracks: [
+              {
+                  id: 1,
+                  text: 'Track1'
+              },
+              {
+                id:2,
+                text: 'Track2'
+              }
+          ]
+      }
   }
 }
 </script>
