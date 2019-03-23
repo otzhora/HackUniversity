@@ -9,9 +9,15 @@
 import MainPage from '@/components/MainPage.vue'
 
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
     MainPage
   }
 }
 </script>
+
+<style scoped>
+
+</style>
+
+
