@@ -1,22 +1,27 @@
-<template>
-    <div class="track" :class="{ 'blue-border': isPlaying }">
-        <img v-if="!track.local" src="https://img.icons8.com/windows/32/000000/soundcloud.png">
-        <a class="panel-block is-active" @click="sendToPlayer">
-            {{track.title}}
-            <img class="right" src="https://img.icons8.com/material/24/000000/play.png">
-        </a>
-        <a class="panel-block is-active" @click="stopToPlayer">
-            <img class="right" src="https://img.icons8.com/material/24/000000/stop.png">
+<template>       
+
+    <div class="track" :class="{ 'blue-border': isPlaying }" >
+        <!--<img v-if="!track.local" src="https://img.icons8.com/windows/32/000000/soundcloud.png">-->
+        <a class="panel-block is-active" >
+            <div style="width:100px">
+                <img class="right" src="https://img.icons8.com/material/24/000000/play.png" @click="play">
+                <img class="right" src="https://img.icons8.com/material/24/000000/stop.png" @click="stop">
+                <img class="right" src="https://img.icons8.com/material/24/000000/pause.png" @click="pause">
+            </div>
+            <span style="max-width:300px">{{track.title}}</span>
         </a>
         <div :id="'wave-' + componentid" v-show="isPlaying"></div>
     </div>
+
 </template>
+
 
 <script>
 
 export default {
     name: "Track",
-    props: ["track"],
+    props: ["track", "url"],
+
     data: function() {
         return {
             isPlaying: false,
@@ -24,15 +29,17 @@ export default {
             siriWavePlayer: null
         }
     },
+        
     methods: {
-        sendToPlayer: function(){
-            // alert(this.track.title + " sent to player")
+        play: function(){
 
             if (this.isPlaying) return;
 
             this.isPlaying = true;
-            window.p1 = new window.Tone.Player("http://localhost:5000/audio/uploads/83f46255-2822-43f7-ac0e-5582f31b68ad", function() {
-                window.p1.start();
+
+            window.currentTitle = this.track.title.toString()
+            window.players[window.currentTitle] = new Tone.Player(this.track.url, function() {
+                window.players[window.currentTitle].start();
             }).toMaster();
 
             if (this.siriWavePlayer == null) {
@@ -42,14 +49,24 @@ export default {
                 });
             } 
 
-            this.siriWavePlayer.start();           
+            this.siriWavePlayer.start();
         },
-        stopToPlayer: function() {
+        stop: function() {
 
             if (this.isPlaying) {
-                
-                
-                window.p1.stop();
+                window.currentTitle = this.track.title.toString();
+                window.players[window.currentTitle].stop();
+
+                if (this.siriWavePlayer != null)
+                    this.siriWavePlayer.stop();
+            }
+
+            this.isPlaying = false;
+        },
+        pause: function() {
+            if (this.isPlaying) {
+                window.currentTitle = this.track.title.toString()
+                window.players[window.currentTitle].stop()
 
                 if (this.siriWavePlayer != null)
                     this.siriWavePlayer.stop();
