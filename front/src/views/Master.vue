@@ -13,14 +13,25 @@
               <div class="column">
                 <div class='columns'>
                   <div class='column' >
+                    <div class='columns' id='cp1'>
+                      <div class='column'><Plugin v-bind:id="1"/></div>
+                      <div class='column'><Plugin v-bind:id="2"/></div>
+                      <div class='column'><Plugin v-bind:id="3"/></div>
+                      <div class='column'><Plugin v-bind:id="4"/></div>
+                      
+                    </div>
                     <!-- Каждую крутилку добавляем вручную и назначаем ей ID в соответствии с функционалом-->
-                    <Plugin v-bind:id="1"/>
-        
+                    
                   </div>
+                  <div class='column' id='cp2'></div>
                   <div class='column' >
                     
-                    <Plugin v-bind:id="2" />
-                   
+                    <div class='columns'>
+                      <div class='column'><Plugin v-bind:id="5"/></div>
+                      <div class='column'><Plugin v-bind:id="6"/></div>
+                      <div class='column'><Plugin v-bind:id="7"/></div>
+                      <div class='column'><Plugin v-bind:id="8"/></div>
+                    </div>
                     
                   </div>
                 </div>
