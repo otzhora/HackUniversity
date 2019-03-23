@@ -5,12 +5,15 @@ from flask import current_app as app
 import os 
 import json
 
-from server.file_manager import FileManager
-fm = FileManager()
+
+
 
 bp = Blueprint('upload', __name__, url_prefix='/audio')
 
 ALLOWED_EXT = set(['wav', 'mp3'])
+
+from server.file_manager import FileManager
+fm = FileManager(os.getcwd() + '/server/static/music/', ALLOWED_EXT)
  
 def allowed_file(filename, ALLOWED_EXT=ALLOWED_EXT):
     return '.' in filename and \
