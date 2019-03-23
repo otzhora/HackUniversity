@@ -12,14 +12,11 @@
                 </span>
                 </p>
             </div>
-            <p class="panel-tabs">
-                <a class="is-active">Soundcloud</a>
-                <a>Local</a>
-            </p>
             <div v-bind:key="track.id"
                 v-for="track in sctracks">
                 <Track v-bind:track="track"/>
             </div>
+            
             <div v-bind:key="track.id"
                 v-for="track in tracks">
                 <Track v-bind:track="track" v-bind:url="track.url"/>
