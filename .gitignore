@@ -6,6 +6,8 @@ server/static/music
 __pycache__
 files_backup.json
 libr_test.wav
+buf.wav
+libr_test.mp3
 
 # local env files
 .env.local
