@@ -1,7 +1,14 @@
 <template>
     <div class="playwindow">
-        <img src="../assets/playwindow.png" alt="">
-        <input type="range">
+        <!-- <img src="../assets/playwindow.png" alt=""> -->
+        <div>
+          <img src="../assets/wave.png" alt="">
+          <input type="range">
+        </div>
+        <div>
+          <img src="../assets/wave.png" alt="">
+          <input type="range">
+        </div>
     </div>
 </template>
 
