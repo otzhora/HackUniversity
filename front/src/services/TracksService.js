@@ -21,7 +21,7 @@ export default {
               }
         ];
         
-        let url = 'http://localhost:5000/audio/uploads'
+        let url = 'http://193.124.206.179:5000/audio/uploads'
         let res = await axios.get(url)
         res = res.data
         for(let key in res) {
