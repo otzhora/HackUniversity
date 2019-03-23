@@ -16,14 +16,14 @@ import Track from './Track.vue';
 
 export default {
     name: "TrackList",
-    props:["tracks"],
     components: {
         Track
     },
 
     data() {
         return {
-            loading: false
+            loading: false,
+            tracks: []
         }
     },
 
