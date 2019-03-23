@@ -1,5 +1,6 @@
 <template>
     <div class="track">
+        <img v-if="!track.local" src="https://img.icons8.com/windows/32/000000/soundcloud.png">
         <a class="panel-block is-active" @click="sendToPlayer">
             {{track.title}}
             <img class="right" src="https://img.icons8.com/material/24/000000/play.png">
