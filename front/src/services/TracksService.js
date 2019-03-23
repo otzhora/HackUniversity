@@ -1,8 +1,8 @@
 /* Manage tracks */
+import axios from 'axios';
 
 export default {
-
-    getTracksList() {
+    async getTracksList() {
         let tracks = [
             {
                 id:1,
@@ -20,7 +20,17 @@ export default {
                 url: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/59527799&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'
               }
         ];
-
+        
+        let url = 'http://localhost:5000/audio/uploads'
+        let res = await axios.get(url)
+        res = res.data
+        for(let key in res) {
+          tracks.push({
+            id:key,
+            title:res[key]['path'],
+            url: url + '/' + key
+          })
+        }
         return tracks;
     },
 

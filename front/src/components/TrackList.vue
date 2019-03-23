@@ -22,7 +22,7 @@
             </div>
             <div v-bind:key="track.id"
                 v-for="track in tracks">
-                <Track v-bind:track="track"/>
+                <Track v-bind:track="track" v-bind:url="track.url"/>
             </div>
         </nav>
         
@@ -48,9 +48,9 @@ export default {
         }
     },
 
-    created() {
+    async created() {
         this.sctracks = TracksService.getScTracksList();
-        this.tracks = TracksService.getTracksList();
+        this.tracks = await TracksService.getTracksList();
         this.loading = false;
     }
 }
