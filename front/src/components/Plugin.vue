@@ -16,12 +16,13 @@ export default {
         
         Draggable.create(".knob", {
             type: "rotation",
-            bounds:{minRotation:0, maxRotation:360}, 
+            bounds:{minRotation:-180, maxRotation:180}, 
             throwProps: true,
             liveSnap:{
                 rotation: function(value) {
-                    //TODO: send values to server
-                    console.log(value)
+                    if (window.currentTitle) {
+                      window.players[window.currentTitle].volume.value = value / 10;
+                    }
                     return Math.round(value / 10) * 10; 
                 }
             },
