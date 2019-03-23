@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 server/dist
+server/static/img
+server/static/music
 
 # local env files
 .env.local
