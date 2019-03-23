@@ -8,6 +8,9 @@ def allowed_file(filename, ALLOWED_EXT):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXT
 
+def get_title(filename):
+    return filename.split('.')[0]
+
 class FileManager: 
     def __init__(self, base_path=None, av_ext=None):
         self.files = {}
@@ -16,7 +19,7 @@ class FileManager:
             onlyfiles = [f for f in listdir(base_path) if isfile(join(base_path, f))]
             for file in onlyfiles:
                 if allowed_file(file, av_ext):
-                    self.register_new_file(base_path + file)
+                    self.register_new_file(base_path + file, get_title(file))
 
 
 
