@@ -4,7 +4,7 @@
       
         <div class='columns is-gapless'>
           <div class='column is-one-third'>
-            <TrackList v-bind:tracks="tracks"/>
+            <TrackList/>
           </div>
           <div class='column'>
             <PlayWindow />
@@ -51,20 +51,6 @@ export default {
     scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js";
     scriptTag.id = "main";
     document.getElementsByTagName('head')[0].appendChild(scriptTag);
-  },
-  data(){
-      return {
-          tracks: [
-              {
-                  id: 1,
-                  text: 'Track1'
-              },
-              {
-                id:2,
-                text: 'Track2'
-              }
-          ]
-      }
   }
 }
 </script>
