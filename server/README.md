@@ -1,7 +1,8 @@
 # To run type 
 
-```python 
-python app.py
+```
+export FLASK_APP=server
+flask run
 ```
 
 # To enable dev server

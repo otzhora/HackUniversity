@@ -1,12 +1,19 @@
 from flask import Blueprint, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
-from flask import send_from_directory
+from flask import send_from_directory, send_file
 from flask import current_app as app
 import os 
+import json
 
-bp = Blueprint('upload', __name__, url_prefix='/img')
 
-ALLOWED_EXT = set(['wav'])
+
+
+bp = Blueprint('upload', __name__, url_prefix='/audio')
+
+ALLOWED_EXT = set(['wav', 'mp3'])
+
+from server.file_manager import FileManager
+fm = FileManager(os.getcwd() + '/server/static/music/', ALLOWED_EXT)
  
 def allowed_file(filename, ALLOWED_EXT=ALLOWED_EXT):
     return '.' in filename and \
@@ -28,9 +35,13 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            print(file_path)
+            id_ = fm.register_new_file(file_path)
+
             return redirect(url_for('upload.uploaded_file',
-                                    filename=filename))
+                                    id_=id_))
     return '''
     <!doctype html>
     <title>Upload new File</title>
@@ -42,7 +53,12 @@ def upload_file():
     '''
 
 
-@bp.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+@bp.route('/uploads/<id_>')
+def uploaded_file(id_):
+    return send_file(fm.get_registred_file(id_)['path'])
+
+
+@bp.route('/uploads')
+def get_all_files():
+    return json.dumps(fm.get_registred_files())
+

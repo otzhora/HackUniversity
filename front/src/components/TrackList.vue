@@ -17,6 +17,10 @@
                 <a>Local</a>
             </p>
             <div v-bind:key="track.id"
+                v-for="track in sctracks">
+                <Track v-bind:track="track"/>
+            </div>
+            <div v-bind:key="track.id"
                 v-for="track in tracks">
                 <Track v-bind:track="track"/>
             </div>
@@ -45,6 +49,7 @@ export default {
     },
 
     created() {
+        this.sctracks = TracksService.getScTracksList();
         this.tracks = TracksService.getTracksList();
         this.loading = false;
     }
