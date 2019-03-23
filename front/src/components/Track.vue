@@ -17,7 +17,7 @@ export default {
     methods: {
         sendToPlayer: function(){
             // alert(this.track.title + " sent to player")
-            window.p1 = new window.Tone.Player("http://localhost:5000/img/uploads/test.mp3", function() {
+            window.p1 = new window.Tone.Player("http://localhost:5000/audio/uploads/83f46255-2822-43f7-ac0e-5582f31b68ad", function() {
                 window.p1.start();
             }).toMaster();
             
