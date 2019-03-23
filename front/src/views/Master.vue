@@ -35,12 +35,22 @@
 import TrackList from '../components/TrackList'
 import PlayWindow from '../components/PlayWindow'
 import Plugin from '../components/Plugin'
+
+// require( 'tone' )(); Not works for me
+
 export default {
   name: 'Master',
   components: {
     TrackList,
     PlayWindow,
     Plugin
+  },
+  mounted() {
+    if (document.getElementById('main')) return; // was already loaded
+    var scriptTag = document.createElement("script");
+    scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js";
+    scriptTag.id = "main";
+    document.getElementsByTagName('head')[0].appendChild(scriptTag);
   },
   data(){
       return {
