@@ -23,6 +23,7 @@ def concat_music(ids, files, outputFile):
     print(librosa.core.get_duration(res, 22050))
     librosa.output.write_wav('buf.wav', res, 22050)
     subprocess.call(["ffmpeg", "-i", "buf.wav", "-vn", "-ar", "22050", "-ac", "2", "-b:a", "192k", "-f", "mp3", outputFile])
+    subprocess.call(['rm', 'buf.wav'])
     return annotation
 
 
