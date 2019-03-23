@@ -26,8 +26,10 @@ def get_title(filename):
 class FileManager: 
     def __init__(self, base_path=None, av_ext=None):
         self.files = {}
-        print(os.getcwd())
-        if os.path.isfile(os.getcwd() + 'files_backup.json'):
+        #print(os.path.isfile(os.getcwd() + '/files_backup.json'))
+
+        
+        if os.path.isfile(os.getcwd() + '/files_backup.json'):
             print('reading data from files_backup.json')
             with open('files_backup.json', 'r') as f:
                 self.files = json.load(f)
