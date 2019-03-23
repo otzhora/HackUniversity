@@ -6,9 +6,9 @@ import os
 
 bp = Blueprint('upload', __name__, url_prefix='/img')
 
-#ALLOWED_EXT = set(['wav'])
+ALLOWED_EXT = set(['wav'])
  
-def allowed_file(filename, ALLOWED_EXT=set(['wav'])):
+def allowed_file(filename, ALLOWED_EXT=ALLOWED_EXT):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXT
 
