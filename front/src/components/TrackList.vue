@@ -17,7 +17,7 @@
                 <a>Local</a>
             </p>
             <div v-bind:key="track.id"
-                v-for="track in sctracks">
+                v-for="track in tracks">
                 <Track v-bind:track="track"/>
             </div>
         </nav>
