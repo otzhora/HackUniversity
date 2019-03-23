@@ -10,9 +10,6 @@ def get_bmp(file_path, bpm_guess=120):
     return tempo, beats
 
 
-def concatenate_music(files):
-    pass
-
 if __name__ == '__main__':
     path = '/Users/yra/Desktop/study/hack_university/server/static/music/Queen_-_Dont_Stop_Me_Now.mp3'
 
