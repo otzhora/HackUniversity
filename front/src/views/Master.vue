@@ -47,10 +47,16 @@ export default {
   },
   mounted() {
     if (document.getElementById('main')) return; // was already loaded
+
     var scriptTag = document.createElement("script");
     scriptTag.src = "https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js";
     scriptTag.id = "main";
     document.getElementsByTagName('head')[0].appendChild(scriptTag);
+
+    let waveformScriptTag = document.createElement('script');
+        //waveformScriptTag.src = "https://unpkg.com/siriwave/dist/siriwave.js";
+        waveformScriptTag.src = "https://howlerjs.com/assets/howler.js/examples/player/siriwave.js";
+        document.head.appendChild(waveformScriptTag);
   }
 }
 </script>
