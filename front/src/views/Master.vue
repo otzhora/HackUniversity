@@ -50,9 +50,6 @@ export default {
     PlayWindow,
     Plugin
   },
-  data(){
-    
-  },
   mounted() {
     if (document.getElementById('main')) return; // was already loaded
 
