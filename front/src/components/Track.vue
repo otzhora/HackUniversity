@@ -15,7 +15,7 @@ export default {
     props: ["track", "url"],
     methods: {
         play: function(){
-            console.log(this.track.url)
+            console.log(this.track)
             window.p1 = new window.Tone.Player(this.track.url, function() {
                 window.p1.start();
             }).toMaster();

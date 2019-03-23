@@ -27,7 +27,7 @@ export default {
         for(let key in res) {
           tracks.push({
             id:key,
-            title:res[key]['path'],
+            title:res[key]['title'],
             url: url + '/' + key
           })
         }
