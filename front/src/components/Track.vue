@@ -16,8 +16,7 @@ export default {
     props: ["track", "url"],
     methods: {
         sendToPlayer: function(){
-            // alert(this.track.title + " sent to player")
-            window.p1 = new window.Tone.Player(this.url, function() {
+            window.p1 = new window.Tone.Player(this.track.url, function() {
                 window.p1.start();
             }).toMaster();
             
