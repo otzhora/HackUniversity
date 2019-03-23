@@ -1,6 +1,6 @@
 <template>
     <div class="track">
-        {{track.text}}
+        {{track.title}}
     </div>
 </template>
 
