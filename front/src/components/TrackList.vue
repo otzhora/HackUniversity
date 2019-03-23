@@ -12,18 +12,12 @@
                 </span>
                 </p>
             </div>
-            <div v-bind:key="track.id"
-                v-for="track in sctracks">
-                <Track v-bind:track="track"/>
-            </div>
             
             <div v-bind:key="track.id"
                 v-for="track in tracks">
                 <Track v-bind:track="track" v-bind:url="track.url"/>
             </div>
         </nav>
-        
-        
 
     </div>
 </template>
@@ -41,14 +35,12 @@ export default {
     data() {
         return {
             loading: false,
-            tracks: [],
-            sctracks: []
+            tracks: []
         }
     },
 
     async created() {
-        window.players = []
-        this.sctracks = TracksService.getScTracksList();
+        window.players = [];
         this.tracks = await TracksService.getTracksList();
         this.loading = false;
     }
