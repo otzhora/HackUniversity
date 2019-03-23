@@ -50,6 +50,7 @@ export default {
     },
 
     async created() {
+        window.players = []
         this.sctracks = TracksService.getScTracksList();
         this.tracks = await TracksService.getTracksList();
         this.loading = false;
