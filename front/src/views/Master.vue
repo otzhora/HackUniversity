@@ -4,7 +4,7 @@
       
         <div class='columns is-gapless'>
           <div class='column is-one-third'>
-            <TrackList v-bind:tracks="tracks"/>
+            <TrackList v-bind:sctracks="sctracks"/>
           </div>
           <div class='column'>
             <PlayWindow />
@@ -63,6 +63,22 @@ export default {
                 id:2,
                 text: 'Track2'
               }
+          ],
+          sctracks:[{
+            id:1,
+            name: 'Girl i want/girl I need [rough]',
+            url: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/465705123&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'
+          },
+          {
+            id:2,
+            name: "When you're near",
+            url: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/427416225&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'
+          },
+          {
+            id:3,
+            name: 'Hardwell - Spaceman (Carnage Festival Trap Remix)',
+            url: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/59527799&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'
+          }
           ]
       }
   }
