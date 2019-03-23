@@ -1,10 +1,9 @@
 <template>
-    <div class="plugin" id='p1'>
+    <div class="plugin">
         <div class="knobBG">
-            <div class="knob">
+            <div class="knob" v-bind:id="id">
             </div>
         </div>
-        
     </div>
 </template>
 
@@ -12,6 +11,7 @@
 import Draggable from 'gsap/Draggable'
 export default {
     name: "Plugin",
+    props: ["id"],
     mounted(){
         
         Draggable.create(".knob", {
@@ -20,31 +20,29 @@ export default {
             throwProps: true,
             liveSnap:{
                 rotation: function(value) {
-                    //TODO: send values to server
-                    console.log(value)
+                    //If you want to get id of knob, use this._eventTarget.id
+                    console.log(value, this._eventTarget.id)
                     return Math.round(value / 10) * 10; 
                 }
             },
             
         })
         
-    },
-    methods: {
-
     }
 }
 </script>
 
 <style scoped>
 .knobBG, .knob {
-  position:absolute;
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/knob_Base.png');
-  width:355px; 
-  height:355px;
+  background-size: 100px 100px;
+  width:100px; 
+  height:100px;
 }
 .knob{
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/knob_Spinner.png');
   z-index: 1;
 
 }
+
 </style>

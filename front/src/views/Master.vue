@@ -12,9 +12,16 @@
               
               <div class="column">
                 <div class='columns'>
-                  <div class='column'><Plugin />
+                  <div class='column' >
+                    <!-- Каждую крутилку добавляем вручную и назначаем ей ID в соответствии с функционалом-->
+                    <Plugin v-bind:id="1"/>
+        
                   </div>
-                  <div class='column'><Plugin />
+                  <div class='column' >
+                    
+                    <Plugin v-bind:id="2" />
+                   
+                    
                   </div>
                 </div>
               </div>
@@ -42,6 +49,9 @@ export default {
     TrackList,
     PlayWindow,
     Plugin
+  },
+  data(){
+    
   },
   mounted() {
     if (document.getElementById('main')) return; // was already loaded
