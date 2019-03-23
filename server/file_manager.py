@@ -4,6 +4,17 @@ import os
 from os import listdir
 from os.path import isfile, join
 import json
+import librosa
+
+def get_bmp(file_path, bpm_guess=120):
+    # on most tracks works fine w\ guess 120
+
+    y, sr = librosa.load(file_path, sr=44000)
+    hop_length = 512
+    tempo, beats = librosa.beat.beat_track(y=y, sr=sr, hop_length=hop_length, start_bpm=bpm_guess)
+
+    return tempo, beats
+
 
 def allowed_file(filename, ALLOWED_EXT):
     return '.' in filename and \
@@ -15,7 +26,6 @@ def get_title(filename):
 class FileManager: 
     def __init__(self, base_path=None, av_ext=None):
         self.files = {}
-
         print(os.getcwd())
         if os.path.isfile(os.getcwd() + 'files_backup.json'):
             print('reading data from files_backup.json')
@@ -39,7 +49,7 @@ class FileManager:
         self.files[id_] = {
             'path': file_path
         }
-        
+        self.files[id_]['bpm'] = get_bmp(file_path)[0]
         if file_title:
             self.files[id_]['title'] = file_title
         else:
@@ -47,7 +57,7 @@ class FileManager:
         if file_properties:
             self.files[id_]['properties'] = file_properties
 
-        with open('server/files_backup.json', 'w') as outfile:
+        with open('files_backup.json', 'w') as outfile:
             json.dump(self.files, outfile)
         return id_
 
@@ -56,13 +66,25 @@ class FileManager:
 
 
     def get_registred_file(self, file_id):
-        print("get reg files")
-        print(self.files)
         return self.files[file_id]
+
+
+    def fill_bpm(self):
+        print('filling missing bpms')
+
+        for id_, file in self.files.items():
+            print('filling {}'.format(file['title']))
+            if 'bpm' not in file:
+                file['bpm'] = get_bmp(file['path'])[0]
+
+        with open('files_backup.json', 'w') as outfile:
+            json.dump(self.files, outfile)
+
 
 if __name__ == '__main__':
     path = os.getcwd() + '/static/music/'
     ALLOWED_EXT = set(['wav', 'mp3'])
     fm = FileManager(path, ALLOWED_EXT)
-
+    from audio import get_bmp
+    fm.fill_bpm()
     print(fm.get_registred_files())
