@@ -78,6 +78,6 @@ export default {
 </script>
 
 <style scoped>
-
+  background-image: url(/logo1.jpg);
 </style>
 

@@ -5,7 +5,7 @@
         <div class="navbar-brand">
 
           <a class="navbar-item" href="/">
-            <img src="./assets/trava.png" alt="logo" width='50' height="100">
+            <img src="./assets/logo1.jpg" alt="logo" >
           </a>
           
         </div>
