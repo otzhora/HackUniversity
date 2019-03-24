@@ -115,7 +115,7 @@ class FileManager:
             self.files[id_]['properties'] = file_properties
 
         print('prcessing {}'.format(self.files[id_]['title']))
-        self.files[id_]['img'] = get_img(self.files[id_]['path'], os.getcwd() + '/server/static/img/' + self.files[id_]['title'] + '.png')[0]
+        self.files[id_]['img'] = get_img(self.files[id_]['path'], os.getcwd() + '/server/static/img/' + self.files[id_]['title'] + '.png')
         self.files[id_]['bpm'] = get_bmp(file_path)[0]
 
 
