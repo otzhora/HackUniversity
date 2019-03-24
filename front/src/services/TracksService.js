@@ -18,13 +18,14 @@ export default {
         return tracks;
     },
 
-    /*async*/ getMasterTrack() {
+    async getMasterTrack() {
       // http://193.124.206.179:5000/audio/uploads/6d4bbe1b-c06d-49b2-ba63-3be00706c25c
+
       return {
         id: 1,
         title: 'For Hack with love',
         author: 'A team ai dj',
-        url: 'http://193.124.206.179:5000/audio/uploads/6d4bbe1b-c06d-49b2-ba63-3be00706c25c',
+        url: 'http://193.124.206.179:5000/concat',
         includes: [
           {start: 1, end: 20, title: 'some music'},
           {start: 21, end: 60, title: 'yet another track'}
@@ -32,4 +33,5 @@ export default {
       };
 
     }
+
 }
