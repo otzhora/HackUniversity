@@ -64,8 +64,10 @@ export default {
         });
 
         window.wavesurfer = this.wavesurfer;
+        
       }
-
+      this.isPlaying = !this.isPlaying
+        console.log(this.isPlaying)
       this.wavesurfer.on('ready', function () {
         window.wavesurfer.playPause();
       });
