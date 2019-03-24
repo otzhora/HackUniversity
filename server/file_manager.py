@@ -25,9 +25,9 @@ def get_img(src, outputFile):
     data = np.fromstring(audio._data, np.int16)
     fs = audio.frame_rate
 
-    BARS = 400
+    BARS = 100
     BAR_HEIGHT = 60
-    LINE_WIDTH = 2
+    LINE_WIDTH = 5
 
     length = len(data)
     RATIO = length/BARS
