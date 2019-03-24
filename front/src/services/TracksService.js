@@ -26,8 +26,8 @@ export default {
 
       return {
         id: 1,
-        title: 'For Hack with love',
-        author: 'A team ai dj',
+        title: '{ your awesome track }',
+        author: 'for Hack with love',
         url: 'http://193.124.206.179:5000/concat',
         includes: [
           {start: 1, end: 20, title: 'some music'},

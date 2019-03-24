@@ -6,7 +6,7 @@
           {{masterTrack.title}}
         </h1>
         <h2 class="subtitle">
-          by /{{masterTrack.author}}/
+          /{{masterTrack.author}}/
         </h2>
       </div>
     </div>
