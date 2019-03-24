@@ -3,18 +3,32 @@
         <!-- <img src="../assets/playwindow.png" alt=""> -->
         <div>
           <img src="../assets/wave.png" alt="">
-          <input type="range">
+          <input type="range" v-model="first_value" @click="seek_first">
         </div>
         <div>
           <img src="../assets/wave.png" alt="">
-          <input type="range">
+          <input type="range" v-model="second_value" @click="seek_second">
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "PlayWindow"
+    name: "PlayWindow",
+    data: function() {
+      return {
+        first_value: 50,
+        second_value: 50
+      }
+    },
+    methods: {
+      seek_first: function() {
+        
+      },
+      seek_second: function() {
+
+      }
+    }
 }
 </script>
 
