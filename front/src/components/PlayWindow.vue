@@ -4,9 +4,11 @@
         <div class='columns'>
           <div class='column'>
             <img id="first_waveform" src="../assets/wave.png" alt="">
+            <div id="songname1"></div>
             <input id="first_waveform_range" type="range" v-model="first_value" @click="seek_first"></div>
           <div class='column'>
             <img id="second_waveform" src="../assets/wave.png" alt="">
+            <div id="songname2"></div>
             <input id="second_waveform_range" type="range" v-model="second_value" @click="seek_second">
         
           </div>
