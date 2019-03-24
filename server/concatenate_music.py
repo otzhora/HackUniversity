@@ -6,19 +6,33 @@ import subprocess
 import json
 
 def concat_music(ids, files, outputFile):
-    res = []
     annotation = []
     curr_dur = 0
+    dif = 25000
 
+    y1, sr1 = librosa.load(files[ids[0]]['path'], sr=22050)
+    y2, sr2 = librosa.load(files[ids[1]]['path'], sr=22050)
+    res = np.zeros(len(y1) + len(y2))
+
+    res[0: len(y1)] = y1[0: len(y1)].copy()
+    res[len(y1) - 4 * dif: len(y1) - 3 * dif] += 0.6 * (y2[0:dif].copy())
+    res[len(y1) - 3 * dif: len(y1) - 2 * dif] += 0.7 * (y2[dif:2 * dif].copy())
+    res[len(y1) - 2 * dif: len(y1) - 1 * dif] += 0.8 * (y2[2 * dif:3 * dif].copy())
+    res[len(y1) - dif: len(y1)] += 0.9 * (y2[3 * dif: 4 * dif].copy())
+    res[len(y1):len(y1) + len(y2) - 4 * dif] = y2[4*dif:].copy()
+    '''
     for id_ in ids:
         y, sr = librosa.load(files[id_]['path'], sr=22050)
         res = np.concatenate((res, y))
         curr_dur += librosa.core.get_duration(y, 22050)
 
+        res[len(y) - 10000] += 
+
         annotation.append({
             'time': curr_dur, 
             'file': files[id_]
         })
+    '''
     print(res)
     print(len(res))
     print(librosa.core.get_duration(res, 22050))
