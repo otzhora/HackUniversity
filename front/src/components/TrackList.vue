@@ -35,8 +35,7 @@ export default {
     data() {
         return {
             loading: false,
-            tracks: [],
-            masterTrackName: '{your awesome track}'
+            tracks: []
         }
     },
 

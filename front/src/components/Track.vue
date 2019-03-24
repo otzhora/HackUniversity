@@ -24,11 +24,7 @@
                 </span>
             </div>          
         </div>
-
-        <!-- <div class="media-right">
-            <p class="is-small">{{track.bpm}}</p>
-        </div> -->
-        <!--<img v-if="!track.local" src="https://img.icons8.com/windows/32/000000/soundcloud.png">-->   
+  
     </div>
 
 </template>
