@@ -15,6 +15,61 @@ def get_bmp(file_path, bpm_guess=120):
 
     return tempo, beats
 
+from pydub import AudioSegment
+from matplotlib import pyplot as plot
+from PIL import Image, ImageDraw
+import numpy as np
+
+def get_img(src, outputFile):
+    audio = AudioSegment.from_file(src)
+    data = np.fromstring(audio._data, np.int16)
+    fs = audio.frame_rate
+
+    BARS = 100
+    BAR_HEIGHT = 60
+    LINE_WIDTH = 5
+
+    length = len(data)
+    RATIO = length/BARS
+
+    count = 0
+    maximum_item = 0
+    max_array = []
+    highest_line = 0
+
+    for d in data:
+        if count < RATIO:
+            count = count + 1
+
+            if abs(d) > maximum_item:
+                maximum_item = abs(d)
+        else:
+            max_array.append(maximum_item)
+
+            if maximum_item > highest_line:
+                highest_line = maximum_item
+
+            maximum_item = 0
+            count = 1
+
+    line_ratio = highest_line/BAR_HEIGHT
+
+    im = Image.new('RGBA', (BARS * LINE_WIDTH, BAR_HEIGHT), (255, 255, 255, 1))
+    draw = ImageDraw.Draw(im)
+
+    current_x = 1
+    for item in max_array:
+        item_height = item/line_ratio
+
+        current_y = (BAR_HEIGHT - item_height)/2
+        draw.line((current_x, current_y, current_x, current_y + item_height), fill=(169, 171, 172), width=4)
+
+        current_x = current_x + LINE_WIDTH
+
+    im.save(outputFile)
+    return outputFile
+
+
 
 def allowed_file(filename, ALLOWED_EXT):
     return '.' in filename and \
@@ -26,7 +81,7 @@ def get_title(filename):
 class FileManager: 
     def __init__(self, base_path=None, av_ext=None):
         self.files = {}
-        #print(os.path.isfile(os.getcwd() + '/files_backup.json'))
+        print(os.path.isfile(os.getcwd() + '/files_backup.json'))
 
         
         if os.path.isfile(os.getcwd() + '/files_backup.json'):
@@ -51,13 +106,18 @@ class FileManager:
         self.files[id_] = {
             'path': file_path
         }
-        self.files[id_]['bpm'] = get_bmp(file_path)[0]
+        
         if file_title:
             self.files[id_]['title'] = file_title
         else:
             self.files[id_]['title'] = get_title(file_path.split('/')[-1])
         if file_properties:
             self.files[id_]['properties'] = file_properties
+
+        print('prcessing {}'.format(self.files[id_]['title']))
+        self.files[id_]['img'] = get_img(self.files[id_]['path'], os.getcwd() + '/server/static/img/' + self.files[id_]['title'] + '.png')[0]
+        self.files[id_]['bpm'] = get_bmp(file_path)[0]
+
 
         with open('files_backup.json', 'w') as outfile:
             json.dump(self.files, outfile)
@@ -83,10 +143,21 @@ class FileManager:
             json.dump(self.files, outfile)
 
 
+    def fill_img(self):
+        print('filling missing imgs')
+
+        for id_, file in self.files.items():
+            print('filling {}'.format(file['title']))
+            if 'img' not in file:
+                file['img'] = get_img(file['path'], os.getcwd() + '/static/img/' + file['title'] + '.png')
+
+        with open('files_backup.json', 'w') as outfile:
+            json.dump(self.files, outfile)
+
+
 if __name__ == '__main__':
     path = os.getcwd() + '/static/music/'
     ALLOWED_EXT = set(['wav', 'mp3'])
     fm = FileManager(path, ALLOWED_EXT)
-    from audio import get_bmp
-    fm.fill_bpm()
-    print(fm.get_registred_files())
+    
+    fm.fill_img()
