@@ -90,7 +90,7 @@ export default {
 
             if (this.isPlaying) {
                 this.player.stop();
-                this.player.context._ticker._worker.unbind('onmessage')
+                this.player.context._ticker._worker.onmessage=null
                 
                 window.players.pop(this.player);
 

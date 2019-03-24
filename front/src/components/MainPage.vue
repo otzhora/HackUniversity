@@ -67,7 +67,7 @@ export default {
         
       }
       this.isPlaying = !this.isPlaying
-        console.log(this.isPlaying)
+      
       this.wavesurfer.on('ready', function () {
         window.wavesurfer.playPause();
       });
