@@ -1,6 +1,7 @@
 <template>
     <div class="playwindow">
         <!-- <img src="../assets/playwindow.png" alt=""> -->
+        <h1 class="title is-1" contenteditable="true">{{masterTrackName}}</h1>
         <div class='columns'>
           <div class='column'>
             <img id="first_waveform" src="../assets/wave.png" alt="">
@@ -20,7 +21,8 @@ export default {
     data: function() {
       return {
         first_value: 0,
-        second_value: 0
+        second_value: 0,
+        masterTrackName: '{your awesome track}'
       }
     },
     methods: {
