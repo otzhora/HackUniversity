@@ -23,7 +23,11 @@ export default {
     },
     methods: {
       seek_first: function() {
-        console.log(window.players);
+        if (window.players.length > 0) {
+          var p = window.players[0];
+          var d = p.buffer.duration * this.first_value / 100;
+          p.seek(d);
+        }
       },
       seek_second: function() {
         console.log(window.players);
