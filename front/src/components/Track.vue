@@ -42,6 +42,12 @@ export default {
 
             window.players.push(window.player); //todo
 
+            if (window.players.length == 1) {
+                var w1 = document.getElementById("first_waveform");
+                w1.src = this.track.img;
+                console.log(this.track);
+            }
+
             if (this.siriWavePlayer == null) {
                 this.siriWavePlayer = new SiriWave({
                     container: document.getElementById("wave-" + this.componentid),

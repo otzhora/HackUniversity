@@ -2,11 +2,11 @@
     <div class="playwindow">
         <!-- <img src="../assets/playwindow.png" alt=""> -->
         <div>
-          <img src="../assets/wave.png" alt="">
+          <img id="first_waveform" src="../assets/wave.png" alt="">
           <input type="range" v-model="first_value" @click="seek_first">
         </div>
         <div>
-          <img src="../assets/wave.png" alt="">
+          <img id="second_waveform" src="../assets/wave.png" alt="">
           <input type="range" v-model="second_value" @click="seek_second">
         </div>
     </div>
@@ -30,7 +30,11 @@ export default {
         }
       },
       seek_second: function() {
-        console.log(window.players);
+        if (window.players.length > 1) {
+          var p = window.players[1];
+          var d = p.buffer.duration * this.second_value / 100;
+          p.seek(d);
+        }
       }
     }
 }
