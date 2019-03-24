@@ -12,6 +12,7 @@
               
               <div class="column">
                 <div class='columns'>
+                  <div class='column' ></div>
                   <div class='column' id='cp1' >
                     <div class='columns' >
                       <div class='column'><Plugin v-bind:id="1"/></div>
@@ -34,6 +35,7 @@
                     </div>
                     
                   </div>
+                  <div class='column' ></div>
                 </div>
               </div>
             </div>
