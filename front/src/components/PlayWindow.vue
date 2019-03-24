@@ -1,12 +1,14 @@
 <template>
-    <div class="playwindow">
+    <div class="playwindow panel-block">
         <!-- <img src="../assets/playwindow.png" alt=""> -->
         <div>
           <img id="first_waveform" src="../assets/wave.png" alt="">
+          <br>
           <input id="first_waveform_range" type="range" v-model="first_value" @click="seek_first">
         </div>
         <div>
           <img id="second_waveform" src="../assets/wave.png" alt="">
+          <br>
           <input id="second_waveform_range" type="range" v-model="second_value" @click="seek_second">
         </div>
     </div>

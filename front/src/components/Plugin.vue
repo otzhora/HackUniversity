@@ -1,7 +1,7 @@
 <template>
     <div class="plugin">
         <div class="knobBG">
-            <div class="knob" v-bind:id="id">
+            <div class="x" v-bind:id="id">
             </div>
         </div>
     </div>
