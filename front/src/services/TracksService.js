@@ -6,13 +6,15 @@ export default {
         let tracks = [ ];
         
         let url = 'http://193.124.206.179:5000/audio/uploads'
+        let img_url = 'http://193.124.206.179:5000/'
         let res = await axios.get(url)
         res = res.data
         for(let key in res) {
           tracks.push({
             id: key,
             title: res[key]['title'],
-            url: res[key]['url'],
+            img: img_url + '/' + res[key]['img'],
+            url: url + '/' + key,
             bpm: res[key]['bpm'] | 0
           });
         }

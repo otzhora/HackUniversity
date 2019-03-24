@@ -34,7 +34,7 @@
 
 export default {
     name: "Track",
-    props: ["track", "url"],
+    props: ["track", "url", "img"],
 
     data: function() {
         return {
@@ -56,11 +56,14 @@ export default {
             }).toMaster();
 
             window.players.push(window.player); //todo
+            // console.log(window.players);
 
             if (window.players.length == 1) {
                 var w1 = document.getElementById("first_waveform");
                 w1.src = this.track.img;
-                console.log(this.track);
+            } else if (window.players.length == 2) {
+                var w2 = document.getElementById("second_waveform");
+                w2.src = this.track.img;
             }
 
             if (this.siriWavePlayer == null) {
@@ -76,6 +79,7 @@ export default {
 
             if (this.isPlaying) {
                 this.player.stop();
+                window.players.pop(this.player);
 
                 if (this.siriWavePlayer != null)
                     this.siriWavePlayer.stop();
