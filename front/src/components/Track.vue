@@ -60,7 +60,9 @@ export default {
             if (window.players.length == 1) {
                 var w1 = document.getElementById("first_waveform");
                 var w1_range = document.getElementById("first_waveform_range");
+                var songname1 = document.getElementById("songname1")
                 w1.src = this.track.img;
+                songname1.textContent = this.track.title
                 window.player.context._ticker._worker.onmessage = function() { 
                     const [p] = window.players;
                     var pos = p.position / p.buffer.duration * 100;
@@ -69,6 +71,8 @@ export default {
             } else if (window.players.length == 2) {
                 var w2 = document.getElementById("second_waveform");
                 var w2_range = document.getElementById("second_waveform_range");
+                var songname2 = document.getElementById("songname2")
+                songname2.textContent = this.track.title
                 w2.src = this.track.img;
                 window.player.context._ticker._worker.onmessage = function() { 
                     const [_, p] = window.players;
