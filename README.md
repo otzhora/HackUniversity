@@ -25,11 +25,10 @@ There are 2 main apps:
 #### Main DJ window
 
 ![Main DJ window](/wiki/dj_screen.png)
-![Main DJ - playing](/wiki/dj_screen_playing.png)
 
 #### DJ plays tracks
 
-![Main DJ -info ](/wiki/dj_screen_info.png)
+![Main DJ - playing & info ](/wiki/dj_screen_info.png)
 
 #### Track player control
 
