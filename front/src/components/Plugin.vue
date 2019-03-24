@@ -25,7 +25,7 @@ export default {
                     if (this._eventTarget.id === "1" && window.players.length > 0) {
                       const [p1] = window.players;
                       p1.volume.value = value / 10;
-                    } else if (this._eventTarget.id === "2" && window.players.length > 1) {
+                    } else if (this._eventTarget.id === "5" && window.players.length > 1) {
                       const [_, p2] = window.players;
                       p2.volume.value = value / 10;
                     }
