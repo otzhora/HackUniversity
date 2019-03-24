@@ -18,13 +18,16 @@
                 <Track v-bind:track="track" v-bind:url="track.url"/>
             </div>
         </nav>
-
+        <button @click="megre_first_two"> 
+            merge first two 
+        </button>
     </div>
 </template>
 
 <script>
 import TracksService from '@/services/TracksService';
 import Track from './Track.vue';
+import axios from 'axios';
 
 export default {
     name: "TrackList",
@@ -43,7 +46,16 @@ export default {
         window.players = []
         this.tracks = await TracksService.getTracksList();
         this.loading = false;
-    }
+    }, 
+
+    methods: {
+         megre_first_two: async function() {
+             let url = 'http://193.124.206.179:5000/concat/'
+             await axios.post(url, {
+                 'ids': [this.tracks[0]['id'], this.tracks[1]['id']]
+             })
+        }
+    },
 }
 </script>
 
