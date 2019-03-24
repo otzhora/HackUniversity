@@ -18,7 +18,7 @@
 
 ### Master Track Player
 
-![Main DJ - track](/wiki/main_screen_info.png)
+![Main player - track](/wiki/main_screen_info.png)
 
 # Tech Details
 
