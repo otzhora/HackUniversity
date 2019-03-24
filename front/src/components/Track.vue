@@ -59,10 +59,22 @@ export default {
 
             if (window.players.length == 1) {
                 var w1 = document.getElementById("first_waveform");
+                var w1_range = document.getElementById("first_waveform_range");
                 w1.src = this.track.img;
+                window.player.context._ticker._worker.onmessage = function() { 
+                    const [p] = window.players;
+                    var pos = p.position / p.buffer.duration * 100;
+                    w1_range.value = pos;
+                }
             } else if (window.players.length == 2) {
                 var w2 = document.getElementById("second_waveform");
+                var w2_range = document.getElementById("second_waveform_range");
                 w2.src = this.track.img;
+                window.player.context._ticker._worker.onmessage = function() { 
+                    const [_, p] = window.players;
+                    var pos = p.position / p.buffer.duration * 100;
+                    w2_range.value = pos;
+                }
             }
 
             if (this.siriWavePlayer == null) {
@@ -78,6 +90,8 @@ export default {
 
             if (this.isPlaying) {
                 this.player.stop();
+                this.player.context._ticker._worker.unbind('onmessage')
+                
                 window.players.pop(this.player);
 
                 if (this.siriWavePlayer != null)

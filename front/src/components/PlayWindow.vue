@@ -3,11 +3,11 @@
         <!-- <img src="../assets/playwindow.png" alt=""> -->
         <div>
           <img id="first_waveform" src="../assets/wave.png" alt="">
-          <input type="range" v-model="first_value" @click="seek_first">
+          <input id="first_waveform_range" type="range" v-model="first_value" @click="seek_first">
         </div>
         <div>
           <img id="second_waveform" src="../assets/wave.png" alt="">
-          <input type="range" v-model="second_value" @click="seek_second">
+          <input id="second_waveform_range" type="range" v-model="second_value" @click="seek_second">
         </div>
     </div>
 </template>
@@ -17,8 +17,8 @@ export default {
     name: "PlayWindow",
     data: function() {
       return {
-        first_value: 50,
-        second_value: 50
+        first_value: 0,
+        second_value: 0
       }
     },
     methods: {
