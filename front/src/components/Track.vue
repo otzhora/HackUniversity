@@ -56,7 +56,6 @@ export default {
             }).toMaster();
 
             window.players.push(window.player); //todo
-            // console.log(window.players);
 
             if (window.players.length == 1) {
                 var w1 = document.getElementById("first_waveform");

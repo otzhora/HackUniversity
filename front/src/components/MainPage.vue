@@ -25,11 +25,8 @@
 <script>
 
 import TracksService from '@/services/TracksService';
-/*import WaveSurfer from 'wavesurfer.js';*/
-/*import WaveSurfer from '../../dist/wavesurfer.js';*/
 require('../../dist/wavesurfer.js');
 require('../../dist/plugin/wavesurfer.cursor.js');
-//import wavesurfer from "wavesurfer.js";
 
 export default {
   name: 'MainPage',
@@ -44,37 +41,11 @@ export default {
   },
 
   async created() {
-      // console.log(window.WaveSurfer);
-
-      // this.wavesurfer = wavesurfer.create({
-      //   container: '#waveform',
-      //   plugins: [
-      //     wavesurfer.cursor.create({
-      //         showTime: true,
-      //         opacity: 1,
-      //         customShowTimeStyle: {
-      //             color: '#fff',
-      //             padding: '2px',
-      //             'font-size': '10px'
-      //         }
-      //     })
-      //   ]
-      // });
-
-      // this.wavesurfer.on('ready', function () {
-      //   this.ready = true;
-      // });
-    
       this.masterTrack = await TracksService.getMasterTrack();
-      // this.wavesurfer.load(this.masterTrack.url);
-
   },
 
   methods: {
     playPause: function() {
-
-      console.log('init play');
-
       if (this.wavesurfer == null) {
         this.wavesurfer = window.WaveSurfer.create({
           container : '#waveform',
@@ -95,44 +66,11 @@ export default {
         window.wavesurfer = this.wavesurfer;
       }
 
-      console.log('created');
-      console.log('this.wavesurfer: ' + this.wavesurfer);
-
       this.wavesurfer.on('ready', function () {
-        console.log('onready');
-
-        //this.ready = true;
-
         window.wavesurfer.playPause();
-        //window.isPlaying = win.wavesurfer.isPlaying();
-
       });
 
-      console.log('before play');
-
       this.wavesurfer.load(this.masterTrack.url);
-
-      console.log('after play');
-      
-      
-      /*this.wavesurfer.playPause();
-      this.isPlaying = this.wavesurfer.isPlaying();*/
-
-      /*
-
-      this.wavesurfer.on('ready', function () {
-        ready = true;
-
-      });*/
-    
-    /*
-      this.wavesurfer.load(this.masterTrack.url);
-
-
-      this.wavesurfer.playPause();
-      this.isPlaying = this.wavesurfer.isPlaying();
-
-      */
     }
   }
 }
