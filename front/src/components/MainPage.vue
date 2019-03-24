@@ -43,7 +43,7 @@ export default {
       }
   },
 
-  created() {
+  async created() {
       // console.log(window.WaveSurfer);
 
       // this.wavesurfer = wavesurfer.create({
@@ -65,7 +65,7 @@ export default {
       //   this.ready = true;
       // });
     
-      this.masterTrack = /*await*/ TracksService.getMasterTrack();
+      this.masterTrack = await TracksService.getMasterTrack();
       // this.wavesurfer.load(this.masterTrack.url);
 
   },
@@ -78,6 +78,7 @@ export default {
       if (this.wavesurfer == null) {
         this.wavesurfer = window.WaveSurfer.create({
           container : '#waveform',
+          cursorColor: 'hsl(171, 100%, 41%)',
           plugins: [
             window.WaveSurfer.cursor.create({
                 showTime: true,
