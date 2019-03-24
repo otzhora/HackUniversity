@@ -1,15 +1,30 @@
 <template>       
 
-    <div class="track" :class="{ 'blue-border': isPlaying }" >
-        <!--<img v-if="!track.local" src="https://img.icons8.com/windows/32/000000/soundcloud.png">-->
-        <a class="panel-block is-active" >
+    <div class="track media panel-block is-active" :class="{ 'blue-border': isPlaying }" >
+        <figure class="media-left">
             <div style="width:100px">
-                <img class="right" src="https://img.icons8.com/material/24/000000/play.png" @click="play">
-                <img class="right" src="https://img.icons8.com/material/24/000000/stop.png" @click="stop">
+                <img v-if="isPlaying" :src="'https://img.icons8.com/ios/50/000000/pause.png'" @click="stop">
+                <img v-else :src="'https://img.icons8.com/ios/50/000000/play.png'" @click="play">
             </div>
-            <span style="max-width:300px">{{track.title}}</span>
-        </a>
-        <div :id="'wave-' + componentid" v-show="isPlaying"></div>
+        </figure>
+        
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    <strong>{{track.title}}</strong> <small> @ateam</small>
+                    <br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+                </p>
+            </div>
+            <div class="level is-mobile">
+                <div :id="'wave-' + componentid" v-show="isPlaying"></div>
+            </div>
+        </div>
+
+        <div class="media-right">
+            <p class="is-small">{{track.bpm}}</p>
+        </div>
+        <!--<img v-if="!track.local" src="https://img.icons8.com/windows/32/000000/soundcloud.png">-->   
     </div>
 
 </template>
