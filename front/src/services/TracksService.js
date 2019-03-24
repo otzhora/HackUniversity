@@ -10,9 +10,10 @@ export default {
         res = res.data
         for(let key in res) {
           tracks.push({
-            id:key,
-            title:res[key]['title'],
-            url: url + '/' + key
+            id: key,
+            title: res[key]['title'],
+            url: res[key]['url'],
+            bpm: res[key]['bpm'] | 0
           });
         }
         return tracks;
