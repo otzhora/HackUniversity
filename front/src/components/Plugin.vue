@@ -22,10 +22,13 @@ export default {
                 
                 rotation: function(value) {
                      //If you want to get id of knob, use this._eventTarget.id
-                    console.log(value, this._eventTarget.id)
-                    // if (window.currentTitle) {
-                    //   window.players[window.currentTitle].volume.value = value / 10;
-                    // }
+                    if (this._eventTarget.id === "1" && window.players.length > 0) {
+                      const [p1] = window.players;
+                      p1.volume.value = value / 10;
+                    } else if (this._eventTarget.id === "2" && window.players.length > 1) {
+                      const [_, p2] = window.players;
+                      p2.volume.value = value / 10;
+                    }
                     return Math.round(value / 10) * 10; 
                 }
             },
