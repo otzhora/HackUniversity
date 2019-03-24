@@ -51,10 +51,11 @@ export default {
 
             this.isPlaying = true;
 
-            window.currentTitle = this.track.title.toString()
-            window.players[window.currentTitle] = new Tone.Player(this.track.url, function() {
-                window.players[window.currentTitle].start();
+            window.player = this.player = new Tone.Player(this.track.url, function() {
+                window.player.start();
             }).toMaster();
+
+            window.players.push(window.player); //todo
 
             if (this.siriWavePlayer == null) {
                 this.siriWavePlayer = new SiriWave({
@@ -68,8 +69,7 @@ export default {
         stop: function() {
 
             if (this.isPlaying) {
-                window.currentTitle = this.track.title.toString();
-                window.players[window.currentTitle].stop();
+                this.player.stop();
 
                 if (this.siriWavePlayer != null)
                     this.siriWavePlayer.stop();

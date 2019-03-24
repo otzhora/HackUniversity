@@ -40,7 +40,7 @@ export default {
     },
 
     async created() {
-        window.players = [];
+        window.players = []
         this.tracks = await TracksService.getTracksList();
         this.loading = false;
     }

@@ -8,6 +8,7 @@ files_backup.json
 libr_test.wav
 buf.wav
 libr_test.mp3
+*.png
 
 # local env files
 .env.local

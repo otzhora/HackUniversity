@@ -3,18 +3,36 @@
         <!-- <img src="../assets/playwindow.png" alt=""> -->
         <div>
           <img src="../assets/wave.png" alt="">
-          <input type="range">
+          <input type="range" v-model="first_value" @click="seek_first">
         </div>
         <div>
           <img src="../assets/wave.png" alt="">
-          <input type="range">
+          <input type="range" v-model="second_value" @click="seek_second">
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "PlayWindow"
+    name: "PlayWindow",
+    data: function() {
+      return {
+        first_value: 50,
+        second_value: 50
+      }
+    },
+    methods: {
+      seek_first: function() {
+        if (window.players.length > 0) {
+          var p = window.players[0];
+          var d = p.buffer.duration * this.first_value / 100;
+          p.seek(d);
+        }
+      },
+      seek_second: function() {
+        console.log(window.players);
+      }
+    }
 }
 </script>
 
