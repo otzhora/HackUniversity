@@ -44,8 +44,29 @@ export default {
   },
 
   created() {
+      // console.log(window.WaveSurfer);
+
+      // this.wavesurfer = wavesurfer.create({
+      //   container: '#waveform',
+      //   plugins: [
+      //     wavesurfer.cursor.create({
+      //         showTime: true,
+      //         opacity: 1,
+      //         customShowTimeStyle: {
+      //             color: '#fff',
+      //             padding: '2px',
+      //             'font-size': '10px'
+      //         }
+      //     })
+      //   ]
+      // });
+
+      // this.wavesurfer.on('ready', function () {
+      //   this.ready = true;
+      // });
+    
       this.masterTrack = /*await*/ TracksService.getMasterTrack();
-      
+      // this.wavesurfer.load(this.masterTrack.url);
 
   },
 

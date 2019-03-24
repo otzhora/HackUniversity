@@ -33,5 +33,9 @@ def create_app():
     from server import upl_file
 
     app.register_blueprint(upl_file.bp)
+
+    from server import concatenate_music
+
+    app.register_blueprint(concatenate_music.bp)
     #app.add_url_rule('/', endpoint='index')
     return app

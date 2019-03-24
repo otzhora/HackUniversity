@@ -1,7 +1,14 @@
 <template>
     <div class="playwindow">
-        <img src="../assets/playwindow.png" alt="">
-        <input type="range">
+        <!-- <img src="../assets/playwindow.png" alt=""> -->
+        <div>
+          <img src="../assets/wave.png" alt="">
+          <input type="range">
+        </div>
+        <div>
+          <img src="../assets/wave.png" alt="">
+          <input type="range">
+        </div>
     </div>
 </template>
 
@@ -16,7 +23,7 @@ input[type=range] {
   height: 26px;
   -webkit-appearance: none;
   margin: 10px 0;
-  width: 100%;
+  width: 500px;
 }
 input[type=range]:focus {
   outline: none;
