@@ -18,7 +18,7 @@ export default {
             type: "rotation",
             bounds:{minRotation:-180, maxRotation:180}, 
             throwProps: true,
-            sliveSnap:{
+            liveSnap:{
                 
                 rotation: function(value) {
                      //If you want to get id of knob, use this._eventTarget.id

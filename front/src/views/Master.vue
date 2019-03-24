@@ -12,8 +12,8 @@
               
               <div class="column">
                 <div class='columns'>
-                  <div class='column' >
-                    <div class='columns' id='cp1'>
+                  <div class='column' id='cp1' >
+                    <div class='columns' >
                       <div class='column'><Plugin v-bind:id="1"/></div>
                       <div class='column'><Plugin v-bind:id="2"/></div>
                       <div class='column'><Plugin v-bind:id="3"/></div>
@@ -23,8 +23,8 @@
                     <!-- Каждую крутилку добавляем вручную и назначаем ей ID в соответствии с функционалом-->
                     
                   </div>
-                  <div class='column' id='cp2'></div>
-                  <div class='column' >
+                  <div class='column' ></div>
+                  <div class='column' id='cp2'>
                     
                     <div class='columns'>
                       <div class='column'><Plugin v-bind:id="5"/></div>
@@ -78,6 +78,9 @@ export default {
 </script>
 
 <style scoped>
-  background-image: url(/logo1.jpg);
+#cp1, #cp2{
+  padding: 10px;
+  text-align: center;
+}
 </style>
 
