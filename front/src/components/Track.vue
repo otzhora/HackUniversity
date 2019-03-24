@@ -6,7 +6,6 @@
             <div style="width:100px">
                 <img class="right" src="https://img.icons8.com/material/24/000000/play.png" @click="play">
                 <img class="right" src="https://img.icons8.com/material/24/000000/stop.png" @click="stop">
-                <img class="right" src="https://img.icons8.com/material/24/000000/pause.png" @click="pause">
             </div>
             <span style="max-width:300px">{{track.title}}</span>
         </a>
@@ -37,10 +36,11 @@ export default {
 
             this.isPlaying = true;
 
-            window.currentTitle = this.track.title.toString()
-            window.players[window.currentTitle] = new Tone.Player(this.track.url, function() {
-                window.players[window.currentTitle].start();
+            window.player = this.player = new Tone.Player(this.track.url, function() {
+                window.player.start();
             }).toMaster();
+
+            window.players.push(window.player); //todo
 
             if (this.siriWavePlayer == null) {
                 this.siriWavePlayer = new SiriWave({
@@ -54,19 +54,7 @@ export default {
         stop: function() {
 
             if (this.isPlaying) {
-                window.currentTitle = this.track.title.toString();
-                window.players[window.currentTitle].stop();
-
-                if (this.siriWavePlayer != null)
-                    this.siriWavePlayer.stop();
-            }
-
-            this.isPlaying = false;
-        },
-        pause: function() {
-            if (this.isPlaying) {
-                window.currentTitle = this.track.title.toString()
-                window.players[window.currentTitle].stop()
+                this.player.stop();
 
                 if (this.siriWavePlayer != null)
                     this.siriWavePlayer.stop();

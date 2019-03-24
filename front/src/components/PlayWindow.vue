@@ -23,10 +23,10 @@ export default {
     },
     methods: {
       seek_first: function() {
-        
+        console.log(window.players);
       },
       seek_second: function() {
-
+        console.log(window.players);
       }
     }
 }
